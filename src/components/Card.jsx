@@ -1,3 +1,5 @@
+import NewTag from "./NewTag";
+import FeaturedTag from "./FeaturedTag";
 const Card = ({
   id,
   company,
@@ -18,10 +20,11 @@ const Card = ({
         <img src={logo} alt="logo" />
       </article>
 
-      <section>
+      <section className="company">
         <h3>{company}</h3>
-        {/* {isNew && <NewTag />}
-        {isFeatured && <FeaturedTag />} */}
+        {/* new is a property of obj but it is also a keyword in JS so using sq brackets to let JS know I'm accessing the property new and not keyword new */}
+        {["new"] && <NewTag />}
+        {featured && <FeaturedTag />}
       </section>
 
       <h3>{position}</h3>
