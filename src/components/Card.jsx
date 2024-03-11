@@ -1,5 +1,6 @@
 import NewTag from "./NewTag";
 import FeaturedTag from "./FeaturedTag";
+
 const Card = ({
   id,
   company,
@@ -16,7 +17,7 @@ const Card = ({
 }) => {
   return (
     <main className="highlight">
-      <article>
+      <article className="logo">
         <img src={logo} alt="logo" />
       </article>
 
@@ -37,7 +38,13 @@ const Card = ({
 
       <div className="line"></div>
 
-      <section>{/* loop tags */}</section>
+      <section className="tags-container">
+        {[role, level, ...languages, ...tools].map((tag) => (
+          <span key={id + "-tag"} className="tags">
+            {tag}
+          </span>
+        ))}
+      </section>
     </main>
   );
 };
