@@ -1,5 +1,5 @@
 const FeaturedTag = () => {
-  return <h3>Featured</h3>;
+  return <span className="featured-tag">Featured</span>;
 };
 
 export default FeaturedTag;

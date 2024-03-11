@@ -1,5 +1,5 @@
 const NewTag = () => {
-  return <h3>New</h3>;
+  return <span className="new-tag">New!</span>;
 };
 
 export default NewTag;
