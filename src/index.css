@@ -8,11 +8,13 @@
 
 body {
   font-family: "League Spartan", sans-serif;
+}
+
+.container {
   max-width: 375px;
   margin: 0 auto;
 }
 /* Header */
-
 header img {
   background-color: hsl(180, 29%, 50%);
 }
@@ -38,8 +40,8 @@ header img {
   text-align: center;
 }
 
-/* Card */
 
+/* Card */
 main {
   margin: 5rem 2rem 5rem 2rem;
   padding: 1rem;
@@ -100,4 +102,40 @@ ul li {
   color: hsl(180, 29%, 50%);
   font-weight: 700;
   padding: 1rem;
+}
+
+/* Desktop view */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+
+  header img {
+    width: 100%;
+  }
+  
+  main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    position: static;
+    display: flex;
+    align-items: center;
+  }
+
+  .desktop {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .no-line {
+    display: none;
+  }
+
+  .tags {
+    height: fit-content;
+    align-self: center;
+  }
 }
