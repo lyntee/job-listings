@@ -30,7 +30,7 @@ const Card = ({
             {featured && <FeaturedTag />}
           </section>
 
-          <h3>{position}</h3>
+          <h3 className="position">{position}</h3>
 
           <ul>
             <li>{postedAt}</li>

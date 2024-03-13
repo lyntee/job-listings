@@ -69,6 +69,10 @@ main {
 .company h3 {
   color: hsl(180, 29%, 50%);
 }
+.position:hover {
+  color:hsl(180, 29%, 50%);
+  cursor: pointer;
+}
 
 ul {
   display: flex;
@@ -101,7 +105,42 @@ ul li {
   background-color: hsl(180, 31%, 95%);
   color: hsl(180, 29%, 50%);
   font-weight: 700;
-  padding: 1rem;
+  padding: 0 1rem 0 1rem;
+}
+
+.tags:hover {
+  background-color: hsl(180, 29%, 50%);
+  color: #fafafa;
+  cursor: pointer;
+}
+
+/* Filter bar */
+.filter-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsl(180, 31%, 95%);
+}
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-tags-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear {
+  color:hsl(180, 8%, 52%);
+}
+
+.clear:hover {
+  color: hsl(180, 29%, 50%);
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* Desktop view */
