@@ -105,7 +105,7 @@ ul li {
   background-color: hsl(180, 31%, 95%);
   color: hsl(180, 29%, 50%);
   font-weight: 700;
-  padding: 0 1rem 0 1rem;
+  padding: 0.6rem;
 }
 
 .tags:hover {
@@ -121,6 +121,7 @@ ul li {
   align-items: center;
   background-color: hsl(180, 31%, 95%);
 }
+
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -128,10 +129,16 @@ ul li {
 }
 
 .filter-tags-container {
+  background-color: hsl(180, 29%, 50%);
+  border-radius: 0.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+/* .filter-tags-container:hover {
+  background-color: hsl(180, 14%, 20%);
+} */
 
 .clear {
   color:hsl(180, 8%, 52%);
