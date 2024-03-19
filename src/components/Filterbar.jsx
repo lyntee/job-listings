@@ -1,9 +1,12 @@
 import FilterTags from "./FilterTags";
 
-const Filterbar = () => {
+const Filterbar = ({ selectedFilters, setSelectedFilters }) => {
   return (
     <main className="filter-bar-container">
-      <FilterTags />
+      <FilterTags
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
       <h3 className="clear">Clear</h3>
     </main>
   );

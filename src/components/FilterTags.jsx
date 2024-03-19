@@ -1,31 +1,14 @@
-import data from "../../data.json";
 import { CgClose } from "react-icons/cg";
 
-const allTags = [];
+const FilterTags = ({ selectedFilters, setSelectedFilters }) => {
+  // the filter bar should show all tags initially
+  // after clicking on close btn
+  // 1. remove tag from filter bar
+  // 2. filter the cards with tags that does not contain the deleted tag
 
-data.forEach((job) => {
-  allTags.push(job.role);
-  allTags.push(job.level);
-  allTags.push(job.tools);
-  allTags.push(job.languages);
-});
-
-const allFilterTags = allTags.flat().reduce(
-  (acc, currentTag) => {
-    if (!acc.includes(currentTag)) {
-      acc.push(currentTag);
-    }
-    return acc;
-  },
-  ["Frontend"]
-);
-
-// console.log("filter tags", allFilterTags);
-
-const FilterTags = () => {
   return (
     <section className="filter-bar">
-      {allFilterTags.map((tag, index) => (
+      {selectedFilters.map((tag, index) => (
         <div key={index} className="filter-tags-container">
           <span className="tags">{tag}</span>
           <CgClose
@@ -46,6 +29,18 @@ const FilterTags = () => {
                 "hsl(180, 29%, 50%)";
               e.currentTarget.style.cursor = "pointer";
             }}
+            onClick={() =>
+              setSelectedFilters((prevSelectedFilters) =>
+                prevSelectedFilters
+                  .slice(0, index)
+                  .concat(
+                    prevSelectedFilters.slice(
+                      index + 1,
+                      prevSelectedFilters.length
+                    )
+                  )
+              )
+            }
           />
         </div>
       ))}
