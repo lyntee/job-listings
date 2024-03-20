@@ -1,7 +1,5 @@
 # Job listings with filtering
 
-![Design preview for the Job listings with filtering coding challenge](./design/desktop-preview.jpg)
-
 [Live website](https://lyntee.github.io/job-listings/)
 
 ## Welcome! 👋
@@ -22,7 +20,7 @@ This is a Frontend Mentor Challenge.
 - CSS custom properties
 - Flexbox
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
+- React with Vite - JS library
 
 ### Filtering
 
