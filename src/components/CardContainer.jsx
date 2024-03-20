@@ -2,22 +2,25 @@ import data from "../../data.json";
 import Card from "./Card";
 
 const CardContainer = ({ selectedFilters }) => {
-  console.log("selectedFilters", selectedFilters);
+  // console.log("selectedFilters", selectedFilters);
+  // 2. filter the cards with tags that does not contain the deleted tag
   const cards = data.filter((job) => {
-    //role
-    console.log(selectedFilters.includes(job.role));
-    //level
-    // selectedFilters.includes(job.level)
-    // //languages
-    // selectedFilters.some((tag) => job.languages.includes(tag))
-    // //tools
-    // selectedFilters.some((tag) => job.tools.includes(tag))
+    return (
+      //role
+      selectedFilters.includes(job.role) ||
+      //level
+      selectedFilters.includes(job.level) ||
+      // //languages
+      selectedFilters.some((tag) => job.languages.includes(tag)) ||
+      // //tools
+      selectedFilters.some((tag) => job.tools.includes(tag))
+    );
   });
-  // console.log("data", data);
+
   // console.log("cards", cards);
   return (
     <>
-      {data.map((post) => (
+      {cards.map((post) => (
         <Card key={post.id} {...post} />
       ))}
     </>

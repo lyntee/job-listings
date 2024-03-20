@@ -44,6 +44,7 @@ function App() {
       <Filterbar
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
+        allFilterTags={allFilterTags}
       />
       <div className="container">
         <CardContainer selectedFilters={selectedFilters} />
