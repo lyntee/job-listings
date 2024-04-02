@@ -1,6 +1,6 @@
 {
+  "homepage": "https://lyntee.github.io/job-listings",
   "name": "job-listings2",
-  "homepage": "https://lyntee.github.io/job-listings/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "build": "vite build --base=/dist",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
