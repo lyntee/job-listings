@@ -14,6 +14,7 @@ const Card = ({
   postedAt,
   role,
   tools,
+  addFilterTag,
 }) => {
   return (
     <main className="highlight">
@@ -44,7 +45,11 @@ const Card = ({
 
       <section className="tags-container">
         {[role, level, ...languages, ...tools].map((tag, index) => (
-          <span key={id + index + "-tag"} className="tags">
+          <span
+            key={id + index + "-tag"}
+            className="tags"
+            onClick={addFilterTag}
+          >
             {tag}
           </span>
         ))}

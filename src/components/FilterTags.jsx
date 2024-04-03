@@ -1,10 +1,12 @@
 import { CgClose } from "react-icons/cg";
 
 const FilterTags = ({ selectedFilters, setSelectedFilters }) => {
-  // the filter bar should show all tags initially
-  // after clicking on close btn
-  // 1. remove tag from filter bar
-  // 2. filter the cards with tags that does not contain the deleted tag
+  // initial: filter bar is blank
+  // click to add to filter bar
+  // display selected filters on filter bar
+  //continue here
+  // add the clear functionality
+  // display card that includes ALL selected filters
 
   return (
     <section className="filter-bar">

@@ -1,15 +1,13 @@
-// import FilterTags from "./FilterTags";
-import FilterTags2 from "./FilterTags2";
+import FilterTags from "./FilterTags";
 
-const Filterbar = ({ selectedFilters, setSelectedFilters, allFilterTags }) => {
+const Filterbar = ({ selectedFilters, setSelectedFilters }) => {
   return (
     <main className="filter-bar-container">
-      {/* <FilterTags
+      <FilterTags
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
-      /> */}
-      <FilterTags2 />
-      <h3 className="clear" onClick={() => setSelectedFilters(allFilterTags)}>
+      />
+      <h3 className="clear" onClick={() => setSelectedFilters([])}>
         Clear
       </h3>
     </main>
