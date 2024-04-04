@@ -50,15 +50,26 @@ function App() {
     setSelectedFilters([...filterTags]);
   };
 
+  const clearFilterBar = () => {
+    filterTags.splice(0, filterTags.length);
+    // console.log(filterTags);
+    setSelectedFilters([...filterTags]);
+    // console.log(selectedFilters);
+  };
+
   return (
     <>
       <Header view={view} />
       <Filterbar
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
+        clearFilterBar={clearFilterBar}
       />
       <div className="container">
-        <CardContainer addFilterTag={addFilterTag} />
+        <CardContainer
+          addFilterTag={addFilterTag}
+          selectedFilters={selectedFilters}
+        />
       </div>
     </>
   );

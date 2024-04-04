@@ -4,7 +4,6 @@ const FilterTags = ({ selectedFilters, setSelectedFilters }) => {
   // initial: filter bar is blank
   // click to add to filter bar
   // display selected filters on filter bar
-  //continue here
   // add the clear functionality
   // display card that includes ALL selected filters
 
