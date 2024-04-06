@@ -25,7 +25,7 @@ import { useState } from "react";
 
 // console.log("filter tags", allFilterTags);
 
-const filterTags = [];
+let filterTags = [];
 
 function App() {
   const [view, setView] = useState("mobile");
@@ -42,12 +42,18 @@ function App() {
   window.onresize = reportWindowWidth;
 
   const addFilterTag = (e) => {
-    // console.log(selectedFilters);
-    if (!filterTags.includes(e.target.innerText)) {
-      filterTags.push(e.target.innerText);
-    }
-    // console.log(filterTags);
-    setSelectedFilters([...filterTags]);
+    setSelectedFilters((prevSelectedFilters) => {
+      if (filterTags.length > 0) {
+        filterTags = [];
+      }
+
+      if (!prevSelectedFilters.includes(e.target.innerText)) {
+        filterTags.push(e.target.innerText);
+      }
+
+      // ...filterTags,
+      return [...prevSelectedFilters, ...filterTags];
+    });
   };
 
   const clearFilterBar = () => {
@@ -57,13 +63,23 @@ function App() {
     // console.log(selectedFilters);
   };
 
+  function deleteFilterTag(index) {
+    setSelectedFilters((prevSelectedFilters) =>
+      prevSelectedFilters
+        .slice(0, index)
+        .concat(
+          prevSelectedFilters.slice(index + 1, prevSelectedFilters.length)
+        )
+    );
+  }
+
   return (
     <>
       <Header view={view} />
       <Filterbar
         selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
         clearFilterBar={clearFilterBar}
+        deleteFilterTag={deleteFilterTag}
       />
       <div className="container">
         <CardContainer

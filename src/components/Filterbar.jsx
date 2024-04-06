@@ -1,11 +1,11 @@
 import FilterTags from "./FilterTags";
 
-const Filterbar = ({ selectedFilters, setSelectedFilters, clearFilterBar }) => {
+const Filterbar = ({ selectedFilters, clearFilterBar, deleteFilterTag }) => {
   return (
     <main className="filter-bar-container">
       <FilterTags
         selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
+        deleteFilterTag={deleteFilterTag}
       />
       <h3 className="clear" onClick={clearFilterBar}>
         Clear

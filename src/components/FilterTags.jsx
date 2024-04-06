@@ -1,6 +1,6 @@
 import { CgClose } from "react-icons/cg";
 
-const FilterTags = ({ selectedFilters, setSelectedFilters }) => {
+const FilterTags = ({ selectedFilters, deleteFilterTag }) => {
   // initial: filter bar is blank
   // click to add to filter bar
   // display selected filters on filter bar
@@ -30,18 +30,7 @@ const FilterTags = ({ selectedFilters, setSelectedFilters }) => {
                 "hsl(180, 29%, 50%)";
               e.currentTarget.style.cursor = "pointer";
             }}
-            onClick={() =>
-              setSelectedFilters((prevSelectedFilters) =>
-                prevSelectedFilters
-                  .slice(0, index)
-                  .concat(
-                    prevSelectedFilters.slice(
-                      index + 1,
-                      prevSelectedFilters.length
-                    )
-                  )
-              )
-            }
+            onClick={() => deleteFilterTag(index)}
           />
         </div>
       ))}
