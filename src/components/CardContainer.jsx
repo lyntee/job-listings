@@ -1,27 +1,81 @@
+import { useEffect } from "react";
 import data from "../../data.json";
 import Card from "./Card";
 
-const CardContainer = ({ selectedFilters }) => {
-  // console.log("selectedFilters", selectedFilters);
-  // 2. filter the cards with tags that does not contain the deleted tag
-  const cards = data.filter((job) => {
-    return (
-      //role
-      selectedFilters.includes(job.role) ||
-      //level
-      selectedFilters.includes(job.level) ||
-      // //languages
-      selectedFilters.some((tag) => job.languages.includes(tag)) ||
-      // //tools
-      selectedFilters.some((tag) => job.tools.includes(tag))
-    );
-  });
+const CardContainer = ({ addFilterTag, selectedFilters }) => {
+  //continue here
+  // display card that includes ALL selected filters
 
-  // console.log("cards", cards);
+  // useEffect(() => {
+  //   console.log("selectedFilters", selectedFilters);
+
+  //   const cards1 = data.filter((job) => {
+  //     if (selectedFilters.length > 0) {
+  //       return (
+  //         //role
+  //         selectedFilters[0].includes(job.role) ||
+  //         //level
+  //         selectedFilters[0].includes(job.level) ||
+  //         //languages
+  //         job.languages.some((tag) => selectedFilters[0].includes(tag)) ||
+  //         //tools
+  //         job.tools.some((tag) => selectedFilters[0].includes(tag))
+  //       );
+  //     }
+  //   });
+
+  //   console.log("card1", cards1);
+
+  //   const cards2 = cards1.filter((job) => {
+  //     if (selectedFilters.length > 1) {
+  //       return (
+  //         //role
+  //         selectedFilters[1].includes(job.role) ||
+  //         //level
+  //         selectedFilters[1].includes(job.level) ||
+  //         //languages
+  //         job.languages.some((tag) => selectedFilters[1].includes(tag)) ||
+  //         //tools
+  //         job.tools.some((tag) => selectedFilters[1].includes(tag))
+  //       );
+  //     }
+  //   });
+
+  //   console.log("card2", cards2);
+  // }, [selectedFilters]);
+
+  console.log("selectedFilters", selectedFilters);
+  useEffect(() => {
+    let cards = data;
+
+    for (let i = 0; i < selectedFilters.length; i++) {
+      cards = getFilterCards(cards, i);
+    }
+
+    function getFilterCards(cardArr, n) {
+      return cardArr.filter((job) => {
+        if (selectedFilters.length > n) {
+          return (
+            //role
+            selectedFilters[n].includes(job.role) ||
+            //level
+            selectedFilters[n].includes(job.level) ||
+            //languages
+            job.languages.some((tag) => selectedFilters[n].includes(tag)) ||
+            //tools
+            job.tools.some((tag) => selectedFilters[n].includes(tag))
+          );
+        }
+      });
+    }
+
+    console.log("cards", cards);
+  }, [selectedFilters.length]);
+
   return (
     <>
-      {cards.map((post) => (
-        <Card key={post.id} {...post} />
+      {data.map((post) => (
+        <Card key={post.id} {...post} addFilterTag={addFilterTag} />
       ))}
     </>
   );
