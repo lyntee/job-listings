@@ -1,11 +1,6 @@
 import { CgClose } from "react-icons/cg";
 
-const FilterTags = ({ selectedFilters, setSelectedFilters }) => {
-  // the filter bar should show all tags initially
-  // after clicking on close btn
-  // 1. remove tag from filter bar
-  // 2. filter the cards with tags that does not contain the deleted tag
-
+const FilterTags = ({ selectedFilters, deleteFilterTag }) => {
   return (
     <section className="filter-bar">
       {selectedFilters.map((tag, index) => (
@@ -29,18 +24,7 @@ const FilterTags = ({ selectedFilters, setSelectedFilters }) => {
                 "hsl(180, 29%, 50%)";
               e.currentTarget.style.cursor = "pointer";
             }}
-            onClick={() =>
-              setSelectedFilters((prevSelectedFilters) =>
-                prevSelectedFilters
-                  .slice(0, index)
-                  .concat(
-                    prevSelectedFilters.slice(
-                      index + 1,
-                      prevSelectedFilters.length
-                    )
-                  )
-              )
-            }
+            onClick={() => deleteFilterTag(index)}
           />
         </div>
       ))}

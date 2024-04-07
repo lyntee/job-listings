@@ -1,26 +1,39 @@
+import { useEffect } from "react";
 import data from "../../data.json";
 import Card from "./Card";
 
 const CardContainer = ({ selectedFilters }) => {
-  // console.log("selectedFilters", selectedFilters);
-  // 2. filter the cards with tags that does not contain the deleted tag
-  const cards = data.filter((job) => {
-    return (
-      //role
-      selectedFilters.includes(job.role) ||
-      //level
-      selectedFilters.includes(job.level) ||
-      // //languages
-      selectedFilters.some((tag) => job.languages.includes(tag)) ||
-      // //tools
-      selectedFilters.some((tag) => job.tools.includes(tag))
-    );
-  });
+  console.log("selectedFilters", selectedFilters);
+  useEffect(() => {
+    let cards = data;
 
-  // console.log("cards", cards);
+    for (let i = 0; i < selectedFilters.length; i++) {
+      cards = getFilterCards(cards, i);
+    }
+
+    function getFilterCards(cardArr, n) {
+      return cardArr.filter((job) => {
+        if (selectedFilters.length > n) {
+          return (
+            //role
+            selectedFilters[n].includes(job.role) ||
+            //level
+            selectedFilters[n].includes(job.level) ||
+            //languages
+            job.languages.some((tag) => selectedFilters[n].includes(tag)) ||
+            //tools
+            job.tools.some((tag) => selectedFilters[n].includes(tag))
+          );
+        }
+      });
+    }
+
+    console.log("cards", cards);
+  }, [selectedFilters.length]);
+
   return (
     <>
-      {cards.map((post) => (
+      {data.map((post) => (
         <Card key={post.id} {...post} />
       ))}
     </>
