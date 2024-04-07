@@ -2,9 +2,16 @@ import Header from "./components/Header";
 import Filterbar from "./components/Filterbar";
 import CardContainer from "./components/CardContainer";
 import { useState } from "react";
+// import data from "../data.json";
 
 // const allTags = [];
 
+// data.forEach((job) => {
+//   allTags.push(job.role);
+//   allTags.push(job.level);
+//   allTags.push(job.tools);
+//   allTags.push(job.languages);
+// });
 // data.forEach((job) => {
 //   allTags.push(job.role);
 //   allTags.push(job.level);
@@ -23,6 +30,8 @@ import { useState } from "react";
 // );
 
 // console.log("filter tags", allFilterTags);
+
+let filterTags = [];
 
 function App() {
   const [view, setView] = useState("mobile");

@@ -1,6 +1,12 @@
 import { CgClose } from "react-icons/cg";
 
 const FilterTags = ({ selectedFilters, deleteFilterTag }) => {
+  // initial: filter bar is blank
+  // click to add to filter bar
+  // display selected filters on filter bar
+  // add the clear functionality
+  // display card that includes ALL selected filters
+
   return (
     <section className="filter-bar">
       {selectedFilters.map((tag, index) => (

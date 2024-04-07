@@ -1,7 +1,7 @@
 const Header = ({ view }) => {
   return (
     <header>
-      <img src={`../../images/bg-header-${view}.svg`} alt="bg-header" />
+      <img src={`../public/images/bg-header-${view}.svg`} alt="bg-header" />
     </header>
   );
 };
