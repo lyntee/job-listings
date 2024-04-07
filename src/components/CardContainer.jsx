@@ -1,55 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import data from "../../data.json";
 import Card from "./Card";
 
 const CardContainer = ({ addFilterTag, selectedFilters }) => {
-  //continue here
   // display card that includes ALL selected filters
+  //continue here
+  // 1. after click clear: show all cards again
+  // 2. reset filter to display cards according to filter bar tags (not working as wanted -> check logic again)
 
-  // useEffect(() => {
-  //   console.log("selectedFilters", selectedFilters);
+  const cards = useRef(data);
+  const selectedFiltersLength = useRef(selectedFilters.length);
 
-  //   const cards1 = data.filter((job) => {
-  //     if (selectedFilters.length > 0) {
-  //       return (
-  //         //role
-  //         selectedFilters[0].includes(job.role) ||
-  //         //level
-  //         selectedFilters[0].includes(job.level) ||
-  //         //languages
-  //         job.languages.some((tag) => selectedFilters[0].includes(tag)) ||
-  //         //tools
-  //         job.tools.some((tag) => selectedFilters[0].includes(tag))
-  //       );
-  //     }
-  //   });
+  // console.log("selectedFilters", selectedFilters);
+  // console.log("ref cards", cards.current);
+  // console.log("selectedFiltersLength", selectedFiltersLength.current);
 
-  //   console.log("card1", cards1);
-
-  //   const cards2 = cards1.filter((job) => {
-  //     if (selectedFilters.length > 1) {
-  //       return (
-  //         //role
-  //         selectedFilters[1].includes(job.role) ||
-  //         //level
-  //         selectedFilters[1].includes(job.level) ||
-  //         //languages
-  //         job.languages.some((tag) => selectedFilters[1].includes(tag)) ||
-  //         //tools
-  //         job.tools.some((tag) => selectedFilters[1].includes(tag))
-  //       );
-  //     }
-  //   });
-
-  //   console.log("card2", cards2);
-  // }, [selectedFilters]);
-
-  console.log("selectedFilters", selectedFilters);
   useEffect(() => {
-    let cards = data;
+    selectedFiltersLength.current = selectedFilters.length;
 
-    for (let i = 0; i < selectedFilters.length; i++) {
-      cards = getFilterCards(cards, i);
+    if (selectedFilters.length > selectedFiltersLength.current) {
+      for (let i = 0; i < selectedFilters.length; i++) {
+        cards.current = getFilterCards(cards.current, i);
+      }
+    } else {
+      cards.current = data;
+      for (let i = 0; i < selectedFilters.length; i++) {
+        cards.current = getFilterCards(cards.current, i);
+      }
     }
 
     function getFilterCards(cardArr, n) {
@@ -68,13 +45,13 @@ const CardContainer = ({ addFilterTag, selectedFilters }) => {
         }
       });
     }
-
-    console.log("cards", cards);
+    // console.log("ref cards after filter", cards.current);
+    // console.log("selectedFiltersLength after", selectedFiltersLength.current);
   }, [selectedFilters.length]);
 
   return (
     <>
-      {data.map((post) => (
+      {cards.current.map((post) => (
         <Card key={post.id} {...post} addFilterTag={addFilterTag} />
       ))}
     </>
