@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Filterbar from "./components/Filterbar";
 import CardContainer from "./components/CardContainer";
 import { useState } from "react";
-// import data from "../data.json";
+import data from "../data.json";
 
 // const allTags = [];
 
@@ -36,6 +36,7 @@ let filterTags = [];
 function App() {
   const [view, setView] = useState("mobile");
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [cards, setCards] = useState(data);
 
   function reportWindowWidth() {
     console.log(window.innerWidth);
@@ -63,10 +64,10 @@ function App() {
   };
 
   const clearFilterBar = () => {
-    filterTags.splice(0, filterTags.length);
-    // console.log(filterTags);
-    setSelectedFilters([...filterTags]);
-    // console.log(selectedFilters);
+    // clear all elements
+    selectedFilters.length = 0;
+    setSelectedFilters((prevSelectedFilters) => [...prevSelectedFilters]);
+    // console.log("selected filters after clear", selectedFilters);
   };
 
   function deleteFilterTag(index) {
@@ -91,6 +92,8 @@ function App() {
         <CardContainer
           selectedFilters={selectedFilters}
           addFilterTag={addFilterTag}
+          cards={cards}
+          setCards={setCards}
         />
       </div>
     </>
