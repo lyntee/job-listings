@@ -2,7 +2,13 @@ import { useEffect } from "react";
 import data from "../../data.json";
 import Card from "./Card";
 
-const CardContainer = ({ cards, setCards, addFilterTag, selectedFilters }) => {
+const CardContainer = ({
+  cards,
+  setCards,
+  addFilterTag,
+  selectedFilters,
+  selectedFiltersLength,
+}) => {
   // console.log("selectedFilters", selectedFilters);
 
   useEffect(() => {
@@ -13,11 +19,24 @@ const CardContainer = ({ cards, setCards, addFilterTag, selectedFilters }) => {
       console.log("cards", cards);
     }
 
+    // if more filter tags are added
     for (let i = 0; i < selectedFilters.length; i++) {
       setCards((prevCards) => {
         return getFilterCards(prevCards, i);
       });
     }
+
+    // if filter tags are removed
+    if (selectedFilters.length < selectedFiltersLength.current) {
+      for (let i = 0; i < selectedFilters.length; i++) {
+        setCards(data);
+        setCards((prevCards) => {
+          return getFilterCards(prevCards, i);
+        });
+      }
+    }
+    // set prev selected filters length to ref value, just b4 next render
+    selectedFiltersLength.current = selectedFilters.length;
   }, [selectedFilters.length]);
 
   function getFilterCards(cardArr, n) {

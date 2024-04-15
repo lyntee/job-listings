@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import Filterbar from "./components/Filterbar";
 import CardContainer from "./components/CardContainer";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import data from "../data.json";
 
 // const allTags = [];
@@ -37,6 +37,7 @@ function App() {
   const [view, setView] = useState("mobile");
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [cards, setCards] = useState(data);
+  const selectedFiltersLength = useRef(selectedFilters.length);
 
   function reportWindowWidth() {
     console.log(window.innerWidth);
@@ -94,6 +95,7 @@ function App() {
           addFilterTag={addFilterTag}
           cards={cards}
           setCards={setCards}
+          selectedFiltersLength={selectedFiltersLength}
         />
       </div>
     </>
